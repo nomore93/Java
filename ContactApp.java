@@ -18,45 +18,89 @@ public class ContactApp {
         ContactService service = new ContactService(dao);
 
         // Hlavní okno
-        JFrame contactFrame = new JFrame("Formulář");
+        /* JFrame contactFrame = new JFrame("Formulář");
         contactFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        contactFrame.setSize(1000, 700);
+        contactFrame.setSize(1000, 700); */
+        JFrame contactFrame = new JFrame("Jednoduchý formulář");
+        contactFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        contactFrame.setSize(700, 500);
 
         // Mřížka
-       /*  JPanel contactPanel = new JPanel(new GridLayout(6,4 , 10, 10));
-        contactPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); */
-
+        /* JPanel contactPanel = new JPanel(new GridLayout(6,4 , 10, 10));
+        contactPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+ */
         JPanel contactPanel = new JPanel(new GridBagLayout());
         contactPanel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(5, 5, 5, 5);
+
+        // Pozice jména
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.EAST;
-        contactPanel.add(new JLabel("Jméno"));
+    
+        contactPanel.add(new JLabel("Jméno"),gbc);
 
         gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx =5;
         gbc.anchor = GridBagConstraints.WEST;
         JTextField nameField = new JTextField(15);
-        contactPanel.add(nameField,gbc);
-        // Přidání jména
-       /*  contactPanel.add(new JLabel("Jméno:"));
-        JTextField nameField = new JTextField();
-        contactPanel.add(nameField); */
+        contactPanel.add(nameField,gbc); 
 
         
+      /*   // Přidání jména
+         contactPanel.add(new JLabel("Jméno:"));
+        JTextField nameField = new JTextField();
+        contactPanel.add(nameField); */
+      /*   JTextField nameField = new JTextField("Jméno:");
+        nameField.setPreferredSize(new Dimension(10,25));
+        contactPanel.add(nameField);  */
 
         // Přidání příjmení
         JTextField surnameField = new JTextField("Příjmení:");
         contactPanel.add(surnameField);
 
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        contactPanel.add(new JLabel("Příjmení"), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy= 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        JTextField surnamField = new JTextField(15);
+        contactPanel.add(surnamField,gbc);
+
         // Přidání věku
         JTextField ageField = new JTextField("Věk:");
-        contactPanel.add(ageField);
+        contactPanel.add(ageField,gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.EAST;
+        contactPanel.add(new JLabel("Věk"), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy= 2;
+        gbc.anchor = GridBagConstraints.WEST;
+        JTextField agField = new JTextField(15);
+        contactPanel.add(agField,gbc);
 
         // ID 
         JTextField idField = new JTextField("ID");
-        contactPanel.add(idField);
+        contactPanel.add(idField,gbc);
+         gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.anchor = GridBagConstraints.EAST;
+        contactPanel.add(new JLabel("ID"), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy= 3;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField iField = new JTextField(15);
+        contactPanel.add(iField,gbc);
 
         // Vypsání seznamu
         JTextArea resultArea = new JTextArea(5, 30);
@@ -135,6 +179,6 @@ public class ContactApp {
         // Dokončení UI
         contactFrame.add(contactPanel);
         contactFrame.setVisible(true);
-
+                      
     }
 }
